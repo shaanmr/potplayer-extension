@@ -1,8 +1,3 @@
-potplayer-extension
-This extension allows users to send videos directly from the browser to PotPlayer with just a single click. Perfect for those who prefer watching videos on PotPlayer rather than in the browser, offering seamless integration and easy access to video playback.
-
-This Chrome extension enables you to play videos directly from your browser on PotPlayer. If you frequently use PotPlayer for watching videos, this extension provides a seamless way to transfer video links from your browser to PotPlayer with one click.
-
 Features
 - Right-click context menu to send video links to PotPlayer.
 - Seamless integration with PotPlayer for efficient playback.
