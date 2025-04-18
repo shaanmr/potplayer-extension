@@ -8,10 +8,21 @@ class PotPlayerHandler(BaseHTTPRequestHandler):
         if parsed_url.path == '/play':
             video_url = urllib.parse.parse_qs(parsed_url.query).get('url', [None])[0]
             if video_url:
-                subprocess.Popen(["C:/Program Files/DAUM/PotPlayer/PotPlayerMini64.exe", video_url])
-        self.send_response(200)
+                try:
+                    subprocess.Popen([
+                        r"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe", video_url
+                    ])
+                    self.send_response(200)
+                    self.end_headers()
+                    self.wfile.write(b"PotPlayer launched.")
+                    return
+                except Exception as e:
+                    print("Error:", e)
+        self.send_response(400)
         self.end_headers()
+        self.wfile.write(b"Failed to launch PotPlayer.")
 
-server = HTTPServer(('localhost', 5000), PotPlayerHandler)
-print("Server started on http://localhost:5000")
-server.serve_forever()
+if __name__ == '__main__':
+    server = HTTPServer(('localhost', 5000), PotPlayerHandler)
+    print("Server started on http://localhost:5000")
+    server.serve_forever()
